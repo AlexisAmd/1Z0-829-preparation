@@ -28,6 +28,19 @@ child packages, fields, or methods; it imports only classes directly under the p
   }
   ```
 
+  
+## Class structure
+### Classe and source file
+ - A top-level
+class is often public, which means any code can call it.
+-  Java does
+not require that the type be public
+  -  ou can even put two types in the same file. When you do so, at most one of the top-level
+types in the file is allowed to be public
+ - If you do have a public type, it needs to match the filename
+### Ordering Elements in a Class
+//WIP Add exemaple with P I C static init , const an dorder
+
 ## Data types
 ### Primite vs refrence types
 2 data types : 
@@ -105,6 +118,9 @@ Remember that a backslash (**\\**) means to skip the line break.
 #### Escape sequences
 There are two special escape sequences for Text Blocks. 
 These allow fine-grained control of the processing of line breaks and whitespaces: `\` (followed by a line break) and `\s`.
+
+
+
 
 ## Variables
 
