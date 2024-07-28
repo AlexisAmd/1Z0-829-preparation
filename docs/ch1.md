@@ -3,9 +3,10 @@
 ## Package declaration and imports
 - import statements tell Java which packages to look in for
 classes
-- wildcard import all direct classes of a packagé ```java
-import java.util.*;  
-```
+- wildcard import all direct classes of a packagé          
+  ```java
+     m import java.util.*;  
+  ```
 - The import statement doesn’t bring in
 child packages, fields, or methods; it imports only classes directly under the package
 - everything in java.lang is always automatically imported.
