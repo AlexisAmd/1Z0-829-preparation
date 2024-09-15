@@ -4,7 +4,7 @@
 ```java
 public static void main(String[] args);
 ```
-Memo : Papa Sent (Foutrement) Mauvais.  
+Memo : PUer Sent (Foutrement) Mauvais.  
 While most modifiers, such as public (private not allowed) and static, are required for main() methods,
 there are some optional modifiers allowed.
 ```java
@@ -43,6 +43,7 @@ child packages, fields, or methods; it imports only classes directly under the p
     java.sql.Date sqlDate;
   }
   ```
+- a class of a package is generally visible for a class of another package, no need to import it.
 
   
 ## Class structure
