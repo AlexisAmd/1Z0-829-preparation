@@ -4,7 +4,8 @@
 ```java
 public static void main(String[] args);
 ```
-While most modifiers, such as public and static, are required for main() methods,
+Memo : Papa Sent (Foutrement) Mauvais.  
+While most modifiers, such as public (private not allowed) and static, are required for main() methods,
 there are some optional modifiers allowed.
 ```java
 public final static void main(final String[] args) {}
@@ -94,6 +95,23 @@ double annoyingButLegal = 1_00_0.0_0; // Ugly, but compiles
 double reallyUgly = 1__________2; // Also compiles
 ```
 
+#### To string and type conversion
+Lossy conversion from double  (like from (64bits) to float (32buts)) 
+is not allowed without explicit casting, because it can result in the loss of precision. 
+Java is strict about type conversions to prevent unintended data loss.
+
+```java
+// Declaring a float value requires the 'f' suffix to indicate it's a float, not a double.
+float myFloat = 1.23f;
+float myFloat = 1.23;//DOES NOT COMPILE incompatible types: possible lossy conversion from double to float
+
+//the f suffix is not displayed when printing a float value because 
+// the f is considered a syntactical hint for the compiler, not part of the actual value
+System.out.println(myFloat);  // Output: 1.23 (no 'f' suffix in printed value)
+```
+
+
+
 - **Reference type** : A reference type refers to an object (an instance of a class). Unlike primitive types that hold
 their values in the memory where the variable is allocated, references do not hold the value
 of the object they refer to. Instead, a reference “points” to an object by storing the memory
@@ -111,8 +129,16 @@ String tb = """
     Hello
     World""";
 ```
-the code within the `"""` and `"""` is just text.   
-text blocks require a break between beginning and the end.
+The code within the `"""` and `"""` is **just text**.  
+```java
+String block = """
+        doe "+maVar""";  //print "doe "+maVar"
+```
+Text blocks require a break between beginning and the end.
+```java
+String block = """doe"""; // DOES NOT COMPILE
+```
+
 
 Imagine a vertical line drawn on the leftmost non-whitespace character in your text block. 
 Everything to the left of it is **incidental whitespace**, and everything to the right is **essential whitespace**.
@@ -140,7 +166,8 @@ Remember that a backslash (**\\**) means to skip the line break.
 
 #### Escape sequences
 There are two special escape sequences for Text Blocks. 
-These allow fine-grained control of the processing of line breaks and whitespaces: `\` (followed by a line break) and `\s`.
+These allow fine-grained control of the processing of line breaks and whitespaces: `\` (followed by a line break, Omits new line on
+that line) and `\s (Two spaces)`.
 
 
 
