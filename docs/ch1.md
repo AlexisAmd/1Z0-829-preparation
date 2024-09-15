@@ -2,7 +2,7 @@
 ## Main
 
 ```java
-public static void main(String[] args).
+public static void main(String[] args);
 ```
 While most modifiers, such as public and static, are required for main() methods,
 there are some optional modifiers allowed.
@@ -106,7 +106,6 @@ Incidental whitespace just happens to be there to make the code easier to read.
 You can reformat your code and change the amount of incidental whitespace without any impact on your String value.
 
 
-[Text Blocks](../src/main/java/org/alexisamd/ocp17/book/ch1/textblocks/TextBlocks.java)
 ```java
 String tb = """
     Hello
@@ -165,7 +164,6 @@ include dollar ($), yuan (¥), euro (€), and so on.
 -  A single underscore _ is not allowed as an identifier.
 -  You cannot use the same name as a Java reserved word. 
 
-[Possible names for variables](../src/main/java/org/alexisamd/ocp17/book/ch1/NameOfVariables.java)
 
 ### Variables scope
 - **Local variables**: In scope from declaration to the end of the block
@@ -204,8 +202,6 @@ public class VarKeyword {
 }
 ```
 
-
-[Usage of var](../src/main/java/org/alexisamd/ocp17/book/ch1/UsageOfVar.java)
 ### Garbage Collection
 ```java
  System.gc();
