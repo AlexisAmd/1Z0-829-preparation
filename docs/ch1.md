@@ -3,9 +3,9 @@
 ## Package declaration and imports
 - import statements tell Java which packages to look in for
 classes
-- wildcard import all direct classes of a packagé          
+- wildcard import all direct classes of a package          
   ```java
-     m import java.util.*;  
+  import java.util.*;  
   ```
 - The import statement doesn’t bring in
 child packages, fields, or methods; it imports only classes directly under the package
@@ -34,15 +34,24 @@ child packages, fields, or methods; it imports only classes directly under the p
   
 ## Class structure
 ### Classe and source file
- - A top-level
-class is often public, which means any code can call it.
--  Java does
-not require that the type be public
-  -  ou can even put two types in the same file. When you do so, at most one of the top-level
-types in the file is allowed to be public
+ - A top-level class is often public, which means any code can call it.
+-  Java does not require that the type be public
+-  you can even put two types in the same file. When you do so, at most one of the top-level types in the file is allowed to be public
  - If you do have a public type, it needs to match the filename
 ### Ordering Elements in a Class
-//WIP Add exemaple with P I C static init , const an dorder
+Think of the acronym PIC (picture):   Package, Import, and Class.
+```java
+package structure; // package must be first non-comment
+import java.util.*; // import must come after package
+public class Meerkat { // then comes the class
+  double weight; // fields and methods can go in either order
+  public double getWeight() {
+    return weight;
+  }
+  double height; // another field -they don't need to be together
+}
+
+```
 
 ## Data types
 ### Primite vs refrence types
@@ -155,18 +164,18 @@ include dollar ($), yuan (¥), euro (€), and so on.
 ## Local variable type inference
 ### use of var
 - var can be only used with **local** variables, not as an instance, class or method variable.
-- var not a reserved key
 - declaration and initialization must be done in **same statement** in order for the compiler to determine the type.
 - var cannot be initialized with a null value without a type, it can
 be reassigned a null value after it is declared, provided that the underlying
 data type is a reference type.
+- var not a reserved key
 
 ### var initialization
 ```java
 var x;  //does not compile!
 x = 5;
 ```
-This compiles as **var** is not a reserved key in java
+
 ### var compound declaration
 ```java
 var x=5, y=6; //DOES NOT COMPILE
@@ -178,56 +187,3 @@ var x=5, y=6; //DOES NOT COMPILE
 ```
 In Java, there are no guarantees about when garbage collection will run. 
 The JVM is free to ignore calls to System.gc()
-
-### (apparent) conflict of class names
-```java
-import org.enricogiurin.ocp17.ch1.fruits.Apple;
-import org.enricogiurin.ocp17.ch1.phones.*;
-
-```
-In this case will be used class from the package _fruits_ as:  
-**importing by class name takes precedence over wildcards!**
-
-## Text Blocks
-<img src="images/TextBlocks.png" alt="Text Blocks" width="40%">
-
-Incidental whitespace just happens to be there to make the code easier to read. 
-You can reformat your code and change the amount of incidental whitespace without any impact on your String value.
-
-
-[Text Blocks](../src/main/java/org/enricogiurin/ocp17/book/ch1/textblocks/TextBlocks.java)
-```java
-String tb = """
-    Hello
-    World""";
-```
-the code within the `"""` and `"""` is just text.   
-text blocks require a break between beginning and the end.
-
-Imagine a vertical line drawn on the leftmost non-whitespace character in your text block. 
-Everything to the left of it is **incidental whitespace**, and everything to the right is **essential whitespace**.
-### Example
-```java
-String s = """aaa"""; //does not compile
-```
-**Trailing whitespace**: _spazi bianchi finali_ (IT)
-
-```jshelllanguage
-jshell> var text = """
-   ...> John is a good guy\
-   ...>  and he's my friend""";
-text ==> "John is a good guy and he's my friend"
-```
-Remember that a backslash (**\\**) means to skip the line break.
-
-```java
-    String s = """
-        Hello \
-        World
-        """;
-    System.out.println(s);  //Hello World
-```
-
-### Escape sequences
-There are two special escape sequences for Text Blocks. 
-These allow fine-grained control of the processing of line breaks and whitespaces: `\` (followed by a line break) and `\s`.
