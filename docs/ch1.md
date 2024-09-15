@@ -1,4 +1,16 @@
 # Building Blocks
+## Main
+
+```java
+public static void main(String[] args).
+```
+While most modifiers, such as public and static, are required for main() methods,
+there are some optional modifiers allowed.
+```java
+public final static void main(final String[] args) {}
+```
+In this example, both final modifiers are optional, and the main() method is a valid
+entry point with or without them.
 
 ## Package declaration and imports
 - import statements tell Java which packages to look in for
@@ -94,7 +106,7 @@ Incidental whitespace just happens to be there to make the code easier to read.
 You can reformat your code and change the amount of incidental whitespace without any impact on your String value.
 
 
-[Text Blocks](../src/main/java/org/enricogiurin/ocp17/book/ch1/textblocks/TextBlocks.java)
+[Text Blocks](../src/main/java/org/alexisamd/ocp17/book/ch1/textblocks/TextBlocks.java)
 ```java
 String tb = """
     Hello
@@ -153,7 +165,7 @@ include dollar ($), yuan (¥), euro (€), and so on.
 -  A single underscore _ is not allowed as an identifier.
 -  You cannot use the same name as a Java reserved word. 
 
-[Possible names for variables](../src/main/java/org/enricogiurin/ocp17/book/ch1/NameOfVariables.java)
+[Possible names for variables](../src/main/java/org/alexisamd/ocp17/book/ch1/NameOfVariables.java)
 
 ### Variables scope
 - **Local variables**: In scope from declaration to the end of the block
@@ -162,7 +174,7 @@ include dollar ($), yuan (¥), euro (€), and so on.
 - **Class variables**: In scope from declaration until the program ends
 
 ## Local variable type inference
-### use of var
+### Use of var
 - var can be only used with **local** variables, not as an instance, class or method variable.
 - declaration and initialization must be done in **same statement** in order for the compiler to determine the type.
 - var cannot be initialized with a null value without a type, it can
@@ -172,15 +184,28 @@ data type is a reference type.
 
 ### var initialization
 ```java
-var x;  //does not compile!
-x = 5;
+var pileOfPapersToFile = new PileOfPapersToFileInFilingCabinet();//OK
+
+var question; // DOES NOT COMPILE - the, compiler looks only at the line with the declaration
+question = 1;
+
+public void twoTypes() {
+    int a, var b = 3; // DOES NOT COMPILE -All the types declared on a single line must be the same type and share the same declaration
+    var n = null; // DOES NOT COMPILE - This could be any reference type
+}
+
+
+public void Var() {
+  Var var = new Var();//OK var is NOT a reserved keyword
+}
+
+public class VarKeyword {
+  var tricky = "Hello"; // DOES NOT COMPILE, only LOCAL variable, not INSTANCE
+}
 ```
 
-### var compound declaration
-```java
-var x=5, y=6; //DOES NOT COMPILE
-```
-[Usage of var](../src/main/java/org/enricogiurin/ocp17/book/ch1/UsageOfVar.java)
+
+[Usage of var](../src/main/java/org/alexisamd/ocp17/book/ch1/UsageOfVar.java)
 ### Garbage Collection
 ```java
  System.gc();
