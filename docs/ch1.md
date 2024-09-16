@@ -22,14 +22,19 @@ classes
   ```
 - The import statement doesn’t bring in
 child packages, fields, or methods; it imports only classes directly under the package
-- everything in java.lang is always automatically imported.
-- can't import two class with same name
+- everything in java.lang.* is always automatically imported.
+- can't import two class with same name (the compiler need to know which class to use)
   ```java
   import java.util.*;
   import java.sql.*; // causes Date declaration to not compile
+  
+  import java.util.*;
+  import java.sql.Date; // is ok as for Date object it will use the one from java.sql
+  
+  
 
   import java.util.Date;
-  import java.sql.Date; // does not compile
+  import java.sql.Date; // does not compile, compiler doesnt know which one too  choose
   ```
   a solution can be to use the fully qualified class name for one of the type or to remove import and use fully qualified
   type  when declaring the variable instead.
@@ -64,11 +69,45 @@ public class Meerkat { // then comes the class
   }
   double height; // another field -they don't need to be together
 }
+```
 
+### Class initialisation order
+ 
+```java
+public class Tests {
+  // Instance initialization block: runs every time an object is created, before the constructor.
+  {
+    System.out.println("3. Init");
+  }
+
+  // Static initialization block: runs once when the class is first loaded.
+  static {
+    System.out.println("1. static init");
+  }
+
+  // Constructor: runs after the instance initialization block when an object is created.
+  public Tests() {
+    System.out.println("4. constructor");
+  }
+
+  public static void main(String[] args) {
+    System.out.println("2. main");
+    var s = new Tests(); // Creates a new instance of Tests, triggering instance initialization block and constructor.
+  }
+
+  // Output order explanation:
+  // 1. Static block ("1. static init") runs when the class is first loaded.
+  // 2. main method ("2. main") runs after the class is loaded.
+  // 3. Instance initialization block ("3. Init") runs before the constructor when a new object is created.
+  // 4. Constructor ("4. constructor") runs after the instance initialization block.
+}
+}
+
+}
 ```
 
 ## Data types
-### Primite vs refrence types
+### Primite vs Reference types
 2 data types : 
 - **Primitive type** :
     - Java has eight built-in
@@ -87,7 +126,7 @@ or character.
 | double  | 64-bit floating-point value | n/a        | n/a                | 0.0           | 123.456   |
 | char    | 16-bit Unicode value | 0                 | 65,535             | \u0000        | 'a'       |
 
-numeric literals can have (mutiple) underscores in numbers to make them easier to read (expept at begining, end, around decimal point):
+Numeric literals can have (mutiple) underscores in numbers to make them easier to read (expept at begining, end, around decimal point):
 ```java
 double notAtStart = _1000.00; // DOES NOT COMPILE
 double notAtEnd = 1000.00_; // DOES NOT COMPILE
@@ -96,9 +135,26 @@ double annoyingButLegal = 1_00_0.0_0; // Ugly, but compiles
 double reallyUgly = 1__________2; // Also compiles
 ```
 
+
+- **Reference type** : A reference type refers to an object (an instance of a class). Unlike primitive types that hold
+their values in the memory where the variable is allocated, references do not hold the value
+of the object they refer to. Instead, a reference “points” to an object by storing the memory
+
+with parse rturn aprimitive an valueOf not in java phylosphy ?
+
+
+#### Creating Wrapper Classes
+Each primitive type has a wrapper class, which is an object type that corresponds to the
+primitive. T
+
+```java
+int primitive = Integer.parseInt("123");//parseX returns primitive type
+Integer wrapper = Integer.valueOf("123");//valueOf returns wrapper reference type
+```
+
 #### To string and type conversion
-Lossy conversion from double  (like from (64bits) to float (32buts)) 
-is not allowed without explicit casting, because it can result in the loss of precision. 
+Lossy conversion from double  (like from (64bits) to float (32buts))
+is not allowed without explicit casting, because it can result in the loss of precision.
 Java is strict about type conversions to prevent unintended data loss.
 
 ```java
@@ -110,13 +166,6 @@ float myFloat = 1.23;//DOES NOT COMPILE incompatible types: possible lossy conve
 // the f is considered a syntactical hint for the compiler, not part of the actual value
 System.out.println(myFloat);  // Output: 1.23 (no 'f' suffix in printed value)
 ```
-
-
-
-- **Reference type** : A reference type refers to an object (an instance of a class). Unlike primitive types that hold
-their values in the memory where the variable is allocated, references do not hold the value
-of the object they refer to. Instead, a reference “points” to an object by storing the memory
-
 ### Text blocks
 
 <img src="images/TextBlocks.png" alt="Text Blocks" width="40%">
@@ -175,10 +224,10 @@ that line) and `\s (Two spaces)`.
 
 ## Variables
 
-### Local vs Local and Class variables
+### Local and Class variables
 - **Local variables** do not have a default value and **must be initialized** before use. Furthermore,
 the compiler will report an error if you try to read an uninitialized value.
-- **Instance** (field) and **Class variables** (static) **do not need** to be initialized before to be used ecause.
+- **Instance** (field) and **Class variables** (static) **do not need** to be initialized before to be used because.
  As soon as you declare these variables, they are given a *default value* (compiler give simple vale for the type :  null for an object, zero for the numeric
 types, and false for a boolean,...).
 
@@ -199,8 +248,8 @@ include dollar ($), yuan (¥), euro (€), and so on.
 - **Instance variables**: In scope from declaration until the object is eligible for garbage collection
 - **Class variables**: In scope from declaration until the program ends
 
-## Local variable type inference
-### Use of var
+## Local Variable Type Inference (LVTI)
+### Use of LVTI : var
 - var can be only used with **local** variables, not as an instance, class or method variable.
 - declaration and initialization must be done in **same statement** in order for the compiler to determine the type.
 - var cannot be initialized with a null value without a type, it can
