@@ -115,16 +115,16 @@ data types, referred to as the Java primitive types. primitive is just a single 
 or character.
      - Primitives do not have methods declared on them
 
-| Keyword | Type                 | Min value         | Max value          | Default value | Example   |
-|---------|----------------------|-------------------|--------------------|---------------|-----------|
-| boolean | true or false        | n/a               | n/a                | false         | true      |
-| byte    | 8-bit integral value | -128              | 127                | 0             | 123       |
-| short   | 16-bit integral value| -32,768           | 32,767             | 0             | 123       |
-| int     | 32-bit integral value| -2,147,483,648    | 2,147,483,647      | 0             | 123       |
-| long    | 64-bit integral value| -2^63             | 2^63 – 1           | 0L            | 123L      |
-| float   | 32-bit floating-point value | n/a        | n/a                | 0.0f          | 123.45f   |
-| double  | 64-bit floating-point value | n/a        | n/a                | 0.0           | 123.456   |
-| char    | 16-bit Unicode value | 0                 | 65,535             | \u0000        | 'a'       |
+| Keyword | Type                 | Min value         | Max value          | Default value | Example                                                                                            |
+|---------|----------------------|-------------------|--------------------|---------------|----------------------------------------------------------------------------------------------------|
+| boolean | true or false        | n/a               | n/a                | false         | true                                                                                               |
+| byte    | 8-bit integral value | -128              | 127                | 0             | 123                                                                                                |
+| short   | 16-bit integral value| -32,768           | 32,767             | 0             | 123                                                                                                |
+| int     | 32-bit integral value| -2,147,483,648    | 2,147,483,647      | 0             | 123                                                                                                |
+| long    | 64-bit integral value| -2^63             | 2^63 – 1           | 0L            | 123L                                                                                               |
+| float   | 32-bit floating-point value | n/a        | n/a                | 0.0f          | 123.45f<br>123 is valid too (int promoted to float).<br/>123.45 is not (double is large than floa) |
+| double  | 64-bit floating-point value | n/a        | n/a                | 0.0           | 123.456                                                                                            |
+| char    | 16-bit Unicode value | 0                 | 65,535             | \u0000        | 'a'                                                                                                |
 
 Numeric literals can have (mutiple) underscores in numbers to make them easier to read (expept at begining, end, around decimal point):
 ```java
@@ -168,7 +168,7 @@ System.out.println(myFloat);  // Output: 1.23 (no 'f' suffix in printed value)
 ```
 ### Text blocks
 
-<img src="images/TextBlocks.png" alt="Text Blocks" width="40%">
+<img src="images/ch1_TextBlocks.png" alt="Text Blocks" width="40%">
 
 Incidental whitespace just happens to be there to make the code easier to read. 
 You can reformat your code and change the amount of incidental whitespace without any impact on your String value.
