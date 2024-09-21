@@ -75,34 +75,31 @@ public class Meerkat { // then comes the class
  
 ```java
 public class Tests {
-  // Instance initialization block: runs every time an object is created, before the constructor.
-  {
-    System.out.println("3. Init");
-  }
+    // Instance initialization block: runs every time an object is created, before the constructor.
+    {
+        System.out.println("3. Init");
+    }
 
-  // Static initialization block: runs once when the class is first loaded.
-  static {
-    System.out.println("1. static init");
-  }
+    // Static initialization block: runs once when the class is first loaded.
+    static {
+        System.out.println("1. static init");
+    }
 
-  // Constructor: runs after the instance initialization block when an object is created.
-  public Tests() {
-    System.out.println("4. constructor");
-  }
+    // Constructor: runs after the instance initialization block when an object is created.
+    public Tests() {
+        System.out.println("4. constructor");
+    }
 
-  public static void main(String[] args) {
-    System.out.println("2. main");
-    var s = new Tests(); // Creates a new instance of Tests, triggering instance initialization block and constructor.
-  }
+    public static void main(String[] args) {
+        System.out.println("2. main");
+        var s = new Tests(); // Creates a new instance of Tests, triggering instance initialization block and constructor.
+    }
 
-  // Output order explanation:
-  // 1. Static block ("1. static init") runs when the class is first loaded.
-  // 2. main method ("2. main") runs after the class is loaded.
-  // 3. Instance initialization block ("3. Init") runs before the constructor when a new object is created.
-  // 4. Constructor ("4. constructor") runs after the instance initialization block.
-}
-}
-
+    // Output order explanation:
+    // 1. Static block ("1. static init") runs when the class is first loaded.
+    // 2. main method ("2. main") runs after the class is loaded.
+    // 3. Instance initialization block ("3. Init") runs before the constructor when a new object is created.
+    // 4. Constructor ("4. constructor") runs after the instance initialization block.
 }
 ```
 
@@ -281,7 +278,7 @@ public class VarKeyword {
 
 ### Garbage Collection
 ```java
- System.gc();
+System.gc();
 ```
 In Java, there are no guarantees about when garbage collection will run. 
 The JVM is free to ignore calls to System.gc()
